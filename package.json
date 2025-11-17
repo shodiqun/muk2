@@ -1,0 +1,21 @@
+{
+  "name": "muk2-cicd-sample-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js web app for BNSP MUK2 CI/CD pipeline (GitHub Actions + Jenkins).",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
+  },
+  "keywords": [
+    "bnsp",
+    "muk2",
+    "cicd",
+    "jenkins",
+    "github-actions"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+
