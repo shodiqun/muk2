@@ -4,8 +4,8 @@ pipeline {
     environment {
         NODE_VERSION = "20"
         APP_PORT = "3000"
-        // Example deployment directory (adjust to your server)
-        DEPLOY_DIR = "/var/www/muk2-sample-app"
+        // Deployment directory inside Jenkins container
+        DEPLOY_DIR = "/var/jenkins_home/muk2-deploy"
     }
 
     stages {
@@ -18,14 +18,9 @@ pipeline {
         stage('Setup Node.js') {
             steps {
                 sh '''
-                if command -v nvm >/dev/null 2>&1; then
-                  echo "Using nvm to set Node ${NODE_VERSION}"
-                  nvm install ${NODE_VERSION}
-                  nvm use ${NODE_VERSION}
-                else
-                  echo "Using system Node.js"
-                  node -v || true
-                fi
+                echo "Using system Node.js (inside container)"
+                node -v || echo "Node.js not found yet"
+                npm -v || echo "npm not found yet"
                 '''
             }
         }
@@ -72,4 +67,3 @@ pipeline {
         }
     }
 }
-
